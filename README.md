@@ -148,8 +148,8 @@ HDF5 format is used for data storage because:
 # Results Interpretation
 
 The final plot displays each configuration as a point with error bars:
-- **X-axis**: Service Loss (%) - lower is more resilient
-- **Y-axis**: Energy Consumption (Wh) - lower is more efficient
+- X-axis: Service Loss (%) - lower is more resilient
+- Y-axis: Energy Consumption (Wh) - lower is more efficient
 - **Error bars**: Standard deviation across 10 runs
 
 Ideal configurations appear in the lower-left corner (low service loss, low energy). The plot reveals trade-offs between resilience and efficiency for different topologies and control strategies under various disruption scenarios.
