@@ -1,14 +1,14 @@
 # Water Distribution System Resilience Analysis
 
-## Project Overview
+# Project Overview
 
 This project analyzes the resilience of water distribution systems using experimental data from a test facility at the Institute for Fluid System Technology (FST), TU Darmstadt. The analysis follows the complete data lifecycle: planning, collection, processing, analysis, archiving, and visualization.
 
-## Background
+# Background
 
 Critical infrastructure systems like water supply networks face various disruptions including pump failures, pipe blockages, and power outages. This project investigates how different network topologies and control strategies perform under various failure scenarios to identify resilient and efficient configurations.
 
-## Experimental Design
+# Experimental Design
 
 The test facility simulates a scaled-down water distribution network with:
 
@@ -19,9 +19,9 @@ The test facility simulates a scaled-down water distribution network with:
 
 Each combination was tested to measure system performance under different conditions.
 
-## Task Requirements
+# Task Requirements
 
-### Primary Objectives
+# Primary Objectives
 
 1. **Data Processing**: Read and clean experimental data from HDF5 files
 2. **Data Analysis**: Calculate performance metrics (service loss and energy consumption)
@@ -30,14 +30,14 @@ Each combination was tested to measure system performance under different condit
 5. **Version Control**: Use Git to track all code changes
 6. **Documentation**: Provide clear documentation and docstrings
 
-### Performance Metrics
+# Performance Metrics
 
 - **Service Loss (%)**: Measures how much tank pressure deviates from target during disruptions. Lower values indicate better resilience.
 - **Energy Consumption (Wh)**: Total electrical energy used by pumps. Lower values indicate better efficiency.
 
-## Implementation
+# Implementation
 
-### Project Structure
+# Project Structure
 ```
 pa-ws2526/
 ├── data/
@@ -51,37 +51,37 @@ pa-ws2526/
 └── .git/                              # Version control
 ```
 
-### Key Functions
+# Key Functions
 
-#### Data Access Functions
+# Data Access Functions
 
 - `read_metadata()`: Reads metadata attributes from HDF5 groups/datasets
 - `read_data()`: Reads measurement time-series data from HDF5 datasets
 - `generate_group_name()`: Creates all possible experimental configuration names
 
-#### Data Processing Functions
+# Data Processing Functions
 
 - `cap_service_data()`: Cleans tank pressure data by capping values at physical limits
 - `check_negative_values()`: Validates that power measurements are non-negative
 - `integral_with_time_step()`: Calculates integral using trapezoidal rule for non-uniform time steps
 
-#### Analysis Functions
+# Analysis Functions
 
 - `calculate_service_loss()`: Computes percentage deviation from target service level
 - `convert_Ws_to_Wh()`: Converts energy from watt-seconds to watt-hours
 - `calculate_mean_and_std()`: Computes statistics over multiple experimental runs
 
-#### Archiving Functions
+# Archiving Functions
 
 - `save_dataframe_in_hdf5_with_metadata()`: Stores processed data with metadata in HDF5 format
 - `read_plot_data()`: Retrieves archived data and formatting information
 
-#### Visualization Functions
+# Visualization Functions
 
 - `plot_service_loss_vs_power()`: Creates scatter plot with error bars showing performance trade-offs
 - `publish_plot()`: Packages plot with source files for reproducibility
 
-### Main Workflow
+# Main Workflow
 
 The main script executes the following workflow:
 
@@ -107,37 +107,37 @@ The main script executes the following workflow:
 6. **Visualize**: Create plot showing energy consumption vs service loss
 7. **Publish**: Package plot with source files and data
 
-## Why This Approach
+# Why This Approach
 
-### Trapezoidal Integration
+# Trapezoidal Integration
 
 The trapezoidal rule is used to calculate integrals because:
 - Experimental data has non-uniform time steps
 - Simple and numerically stable for time-series data
 - Accurately captures area under pressure and power curves
 
-### Service Loss Calculation
+# Service Loss Calculation
 
 Service loss is calculated from the disruption start time onwards because:
 - Initial stable operation is not relevant to resilience analysis
 - Focuses on system response to failures
 - Provides fair comparison across different disruption scenarios
 
-### Energy Over Full Time Series
+# Energy Over Full Time Series
 
 Total energy is calculated over the complete time series because:
 - Represents total operational cost
 - Includes both normal operation and recovery periods
 - Allows comparison of overall efficiency across strategies
 
-### Statistical Aggregation
+# Statistical Aggregation
 
 Mean and standard deviation are computed over 10 runs to:
 - Account for experimental variability
 - Provide confidence in results
 - Enable statistical comparison between configurations
 
-### HDF5 for Archiving
+# HDF5 for Archiving
 
 HDF5 format is used for data storage because:
 - Supports hierarchical data organization
@@ -145,7 +145,7 @@ HDF5 format is used for data storage because:
 - Efficient for large numerical datasets
 - Standard format in scientific computing
 
-## Results Interpretation
+# Results Interpretation
 
 The final plot displays each configuration as a point with error bars:
 - **X-axis**: Service Loss (%) - lower is more resilient
@@ -154,7 +154,7 @@ The final plot displays each configuration as a point with error bars:
 
 Ideal configurations appear in the lower-left corner (low service loss, low energy). The plot reveals trade-offs between resilience and efficiency for different topologies and control strategies under various disruption scenarios.
 
-## Dependencies
+# Dependencies
 
 - Python 3.12
 - numpy
@@ -162,7 +162,7 @@ Ideal configurations appear in the lower-left corner (low service loss, low ener
 - h5py
 - matplotlib
 
-## Usage
+# Usage
 ```bash
 python main.py
 ```
@@ -172,15 +172,15 @@ This will:
 2. Save processed data to `plotid/data_GdD_plot_WiSe2526.h5`
 3. Generate visualization in timestamped subdirectory under `plotid/`
 
-## Version Control
+# Version Control
 
 All code changes are tracked using Git with meaningful commit messages. The HDF5 data files are excluded from version control via `.gitignore`.
 
-## Author
+# Author
 
 Matrikelnummer: 3774919
 
-## Course
+# Course
 
 Grundlagen der Digitalisierung (GdD)
 Wintersemester 2025/2026
